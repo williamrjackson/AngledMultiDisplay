@@ -7,4 +7,4 @@ Files source from the a folder named "MultiDisplayVideos" on the Windows desktop
 
 Filenames containing "_fit" will play in "fit mode," where the video is sized to be fully visible on the video wall. Otherwise, videos are shown in "flood mode," where some border areas are out of view, due to the uneven borders of video wall.
 
-![Cinema](winemavideowall.png)
+![Cinema](CinemaVideoWall.PNG)
