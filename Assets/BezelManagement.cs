@@ -5,7 +5,7 @@ namespace Wrj
 	public class BezelManagement : MonoBehaviour {
 
 		[Range(0f,1f)]
-		public float bezelSize = 0;
+		public float bezelSize = .25f;
 
 		public Transform rotationParent;
 		public Transform videoManager;
@@ -27,7 +27,7 @@ namespace Wrj
 		// Use this for initialization
 		void Start () 
 		{
-			bezelSize = PlayerPrefs.GetFloat("BezelSize", 0.5f);
+			bezelSize = PlayerPrefs.GetFloat("BezelSize", bezelSize);
 		}
 		
 		// Update is called once per frame
