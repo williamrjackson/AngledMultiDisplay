@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Wrj
 {
@@ -29,7 +27,7 @@ namespace Wrj
 		// Use this for initialization
 		void Start () 
 		{
-			bezelSize = PlayerPrefs.GetFloat("BezelSize", 0);
+			bezelSize = PlayerPrefs.GetFloat("BezelSize", 0.5f);
 		}
 		
 		// Update is called once per frame
@@ -43,7 +41,7 @@ namespace Wrj
 				}
 				else
 				{
-					bezelSize = Mathf.Min(bezelSize + .05f, 1f);
+					bezelSize = Mathf.Min(bezelSize + .025f, 1f);
 				}
 			}
 			else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -54,10 +52,10 @@ namespace Wrj
 				}
 				else
 				{
-					bezelSize = Mathf.Max(bezelSize - .05f, 0f);
+					bezelSize = Mathf.Max(bezelSize - .025f, 0f);
 				}
 			}
-			
+
 			if (bezelSize != cachedSize)
 			{
 				rotationParent.localScale = rotationParent.localScale.With(x:Utils.Remap(bezelSize, 0f, 1f, 1f, 1.1f), y:Utils.Remap(bezelSize, 0f, 1f, 1f, 1.1f));
