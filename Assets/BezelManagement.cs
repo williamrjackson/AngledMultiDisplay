@@ -30,12 +30,34 @@ namespace Wrj
 		void Start () 
 		{
 			bezelSize = PlayerPrefs.GetFloat("BezelSize", 0);
-			PlayerPrefs.SetFloat("BezelSize", bezelSize);
 		}
 		
 		// Update is called once per frame
 		void Update () 
 		{
+			if (Input.GetKeyDown(KeyCode.UpArrow))
+			{
+				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+				{
+					bezelSize = 1f;
+				}
+				else
+				{
+					bezelSize = Mathf.Min(bezelSize + .05f, 1f);
+				}
+			}
+			else if (Input.GetKeyDown(KeyCode.DownArrow))
+			{
+				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+				{
+					bezelSize = 0f;
+				}
+				else
+				{
+					bezelSize = Mathf.Max(bezelSize - .05f, 0f);
+				}
+			}
+			
 			if (bezelSize != cachedSize)
 			{
 				rotationParent.localScale = rotationParent.localScale.With(x:Utils.Remap(bezelSize, 0f, 1f, 1f, 1.1f), y:Utils.Remap(bezelSize, 0f, 1f, 1f, 1.1f));
@@ -47,6 +69,8 @@ namespace Wrj
 				screen8.localPosition = screen8.localPosition.With(x: Utils.Remap(bezelSize, 0f, 1f, screen8LocalXMinBezel, screen8LocalXMaxBezel));
 
 				cachedSize = bezelSize;
+			
+				PlayerPrefs.SetFloat("BezelSize", bezelSize);
 			}
 		}
 	}
